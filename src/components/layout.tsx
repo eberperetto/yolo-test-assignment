@@ -21,12 +21,7 @@ const Layout = () => {
 
   return (
     <div className="bg-[#1E003C] h-screen">
-      <img
-        src={figure}
-        className="fixed bottom-0 ml-[40%] mb-[5%] w-[400px] h-[400px]"
-        alt="figure"
-      />
-      <div className="h-auto ml-10">
+      <div className="h-auto ml-10 background-images">
         <div>
           <img src={logo} className="w-40 h-40" alt="logo" />
         </div>
