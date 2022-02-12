@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 interface BaseSymbolFormProps {
-  submitCallback: (baseSymbol: string) => void;
+  submitCallback: (baseSymbol: string) => Promise<string>;
 }
 
 /**
@@ -9,39 +9,48 @@ interface BaseSymbolFormProps {
  */
 const BaseSymbolForm = ({ submitCallback }: BaseSymbolFormProps) => {
   const [baseSymbol, setBaseSymbol] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [formMessage, setFormMessage] = useState("");
 
-  const handleFormSubmit = () => {
+  const handleFormSubmit = async () => {
     if (!baseSymbol) {
-      setErrorMessage("Enter a cryptocurrency code!");
+      setFormMessage("Enter a cryptocurrency code!");
       return;
     }
-    submitCallback(baseSymbol);
-    setErrorMessage("");
+    let callbackResponse = await submitCallback(baseSymbol);
+    setFormMessage(callbackResponse);
     setBaseSymbol("");
   };
 
   return (
-    <div className="bg-white">
-      <label htmlFor="baseSymbol">CRYPTOCURRENCY CODE</label>
-      <input
-        name="baseSymbol"
-        type="text"
-        required
-        value={baseSymbol}
-        onChange={(event) =>
-          setBaseSymbol(event.currentTarget.value.toUpperCase())
-        }
-        className="border-[1px] border-gray-300 rounded-sm"
-      />
-      {errorMessage && <p>{errorMessage}</p>}
+    <div className="bg-white rounded-sm p-10">
+      <div className="border-2 border-solid border-gray-300 rounded-sm h-10">
+        <input
+          name="baseSymbol"
+          type="text"
+          required
+          value={baseSymbol}
+          onChange={(event) =>
+            setBaseSymbol(event.currentTarget.value.toUpperCase())
+          }
+          className="border-none w-full rounded-sm relative h-9 font-bold text-black pl-5"
+        />
+        <label
+          htmlFor="baseSymbol"
+          className="bg-white text-gray-500 pl-1 pr-1 relative -top-[3.1rem] left-6 font-thin text-xs"
+        >
+          CRYPTOCURRENCY CODE
+        </label>
+      </div>
       <input
         type={"submit"}
         onClick={handleFormSubmit}
         value="Add"
-        className="bg-orange-500 text-white text-center rounded-lg w-60"
+        className="bg-orange-600 text-white text-center rounded-3xl w-full pt-2 pb-2 mt-5"
       />
-      <p className="text-gray-500">
+      {formMessage && (
+        <p className="text-gray-500 text-center w-full mt-5">{formMessage}</p>
+      )}
+      <p className="text-gray-500 mt-10 text-center w-full text-sm">
         Use of this service is subject to terms and conditions.
       </p>
     </div>

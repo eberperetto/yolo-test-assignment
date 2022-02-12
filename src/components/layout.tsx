@@ -9,8 +9,12 @@ import BaseSymbolForm from "./baseSymbolForm";
 const Layout = () => {
   const [baseSymbols, setBaseSymbols] = useState(["BTC", "XRP", "BNB"]);
 
-  const addBaseSymbol = (baseSymbol: string): void => {
+  const addBaseSymbol = async (baseSymbol: string): Promise<string> => {
+    if (baseSymbols.find((symbol) => symbol === baseSymbol)) {
+      return `${baseSymbol} is already on the list!`;
+    }
     setBaseSymbols([...baseSymbols, baseSymbol]);
+    return `${baseSymbol} added to the list!`;
   };
 
   const removeBaseSymbol = (baseSymbol: string): void => {
@@ -41,7 +45,7 @@ const Layout = () => {
               ))}
             </div>
           </div>
-          <div className="col-span-1">
+          <div className="col-span-1 pr-24 pl-24 ml-20">
             <BaseSymbolForm submitCallback={addBaseSymbol} />
           </div>
         </div>
