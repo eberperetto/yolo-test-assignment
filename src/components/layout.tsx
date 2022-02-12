@@ -23,23 +23,23 @@ const Layout = () => {
 
   return (
     <div className="bg-[#1E003C] h-screen">
-      <div className="h-[85%] background-images">
+      <div className="h-max lg:background-images">
         <img
           src={logo}
-          className="w-40 h-40 ml-24 -mt-5"
+          className="w-40 h-40 ml-12 md:ml-24 -mt-5"
           alt="Bitcasino icon"
         />
-        <div className="grid grid-cols-1 lg:grid-cols-2 ml-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 ml-12 md:ml-24">
           <div className="col-span-1">
-            <div className="mb-14">
-              <h1 className="font-semibold text-[40px] text-white pr-[30%] leading-tight">
+            <div className="mb-12 md:mb-14">
+              <h1 className="font-semibold text-[30px] md:text-[40px] text-white pr-[15%] md:pr-[30%] leading-tight">
                 Now you can track all your cryptos here!
               </h1>
-              <p className="text-gray-500 font-semibold text-[20px] pr-[60%] pt-5 leading-tight">
+              <p className="text-gray-500 font-semibold text-[18px] md:text-[20px] pr-[50%] md:pr-[60%] pt-5 leading-tight">
                 Just enter the cryptocurrency code on the form to the right.
               </p>
             </div>
-            <div className="w-[400px] h-[400px]">
+            <div className="relative w-[400px] h-[300px] overflow-auto">
               {baseSymbols?.map((baseSymbol, index) => (
                 <PriceCard
                   key={`${index}`}
@@ -49,18 +49,19 @@ const Layout = () => {
               ))}
             </div>
           </div>
-          <div className="col-span-1 pr-24 pl-24 ml-20">
+          <div className="col-span-1 pr-3 md:pr-24 pl-3 md:pl-24 -ml-12 md:ml-20">
             <BaseSymbolForm submitCallback={addBaseSymbol} />
           </div>
         </div>
-      </div>
-      <div className="bottom-0 w-full h-[15%] bg-white">
-        <p className="text-center text-gray-400 text-xs p-10">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          pellentesque eget massa in sollicitudin. Vivamus eget eros tristique,
-          bibendum diam quis, laoreet eros. Pellentesque condimentum dolor quis
-          dapibus dignissim. Suspendisse non lacinia nunc, et vestibulum dolor.
-        </p>
+        <div className="w-full h-[15%] bg-white m-auto">
+          <p className="text-center text-gray-400 text-xs p-10">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            pellentesque eget massa in sollicitudin. Vivamus eget eros
+            tristique, bibendum diam quis, laoreet eros. Pellentesque
+            condimentum dolor quis dapibus dignissim. Suspendisse non lacinia
+            nunc, et vestibulum dolor.
+          </p>
+        </div>
       </div>
     </div>
   );

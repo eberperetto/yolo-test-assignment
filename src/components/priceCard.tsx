@@ -48,7 +48,7 @@ const PriceCard = ({ baseSymbol, removeCardCallback }: PriceCardProps) => {
   };
 
   return (
-    <div className="text-white h-auto w-auto mb-4">
+    <div className="text-white h-auto w-auto mt-4 mb-4">
       <div className="grid grid-cols-6">
         <img src={icon} className="col-span-1 w-15 h-15" alt="Trophy icon" />
         <div className="col-start-2 col-span-2">
