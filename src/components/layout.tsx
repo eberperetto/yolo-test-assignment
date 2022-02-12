@@ -1,8 +1,6 @@
-import React, { FC, useState } from "react";
+import React, { useState } from "react";
 import PriceCard from "./priceCard";
 import logo from "../assets/logo.svg";
-import bg from "../assets/bg.png";
-import figure from "../assets/figure.png";
 import BaseSymbolForm from "./baseSymbolForm";
 
 /**
@@ -22,25 +20,31 @@ const Layout = () => {
   return (
     <div className="bg-[#1E003C] h-screen">
       <div className="h-auto ml-10 background-images">
-        <div>
-          <img src={logo} className="w-40 h-40" alt="logo" />
+        <img src={logo} className="w-40 h-40" alt="logo" />
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          <div className="col-span-1">
+            <div>
+              <p className="font-extrabold text-2xl text-white">
+                Now you can track all your cryptos here!
+              </p>
+              <p className="text-gray-500 font-semibold text-lg">
+                Just enter the cryptocurrency code on the form to the right.
+              </p>
+            </div>
+            <div className="w-[400px] h-[400px]">
+              {baseSymbols?.map((baseSymbol, index) => (
+                <PriceCard
+                  key={`${index}`}
+                  baseSymbol={baseSymbol}
+                  removeCardCallback={removeBaseSymbol}
+                />
+              ))}
+            </div>
+          </div>
+          <div className="col-span-1">
+            <BaseSymbolForm submitCallback={addBaseSymbol} />
+          </div>
         </div>
-        <>
-          <p className="font-extrabold text-2xl text-white">
-            Now you can track all your cryptos here!
-          </p>
-          <p className="text-gray-300 font-semibold text-lg">
-            Just enter the cryptocurrency code on the form to the right.
-          </p>
-        </>
-        {baseSymbols?.map((baseSymbol, index) => (
-          <PriceCard
-            key={`${index}`}
-            baseSymbol={baseSymbol}
-            removeCardCallback={removeBaseSymbol}
-          />
-        ))}
-        <BaseSymbolForm submitCallback={addBaseSymbol} />
       </div>
       <div className="bottom-0 w-full h-20 bg-white">
         <p className="text-center text-gray-400 text-xs">

@@ -5,7 +5,7 @@ interface BaseSymbolFormProps {
 }
 
 /**
- * Renders a form to add crypto base symbols to price list
+ * Renders a form to add crypto base symbols to a price list
  */
 const BaseSymbolForm = ({ submitCallback }: BaseSymbolFormProps) => {
   const [baseSymbol, setBaseSymbol] = useState("");

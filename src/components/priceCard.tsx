@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import { gql, useQuery } from "@apollo/client";
 import icon from "../assets/icon.svg";
 
@@ -46,19 +46,21 @@ const PriceCard = ({ baseSymbol, removeCardCallback }: PriceCardProps) => {
   };
 
   return (
-    <div className="flex-col text-white h-50 w-100">
-      <img src={icon} className="w-10 h-10" alt="icon" />
-      <div>
-        <p className="font-semibold text-white">{baseSymbol}</p>
-        <div className="text-gray-300">
-          {loading && <p>Loading...</p>}
-          {error && <p>{`Error! ${error}`}</p>}
-          {data && !loading && <p>{getFirstValidMarketPrice(data)}</p>}
+    <div className="text-white h-auto w-auto">
+      <div className="grid grid-cols-6">
+        <img src={icon} className="col-span-1 w-15 h-15" alt="icon" />
+        <div className="col-start-2 col-span-2">
+          <p className="font-semibold text-white">{baseSymbol}</p>
+          <div className="text-gray-500">
+            {loading && <p>Loading...</p>}
+            {error && <p>{`Error! Something went wrong!`}</p>}
+            {data && !loading && <p>{getFirstValidMarketPrice(data)}</p>}
+          </div>
         </div>
-      </div>
-      <div>
-        <button onClick={() => removeCardCallback(baseSymbol)}>{"X"}</button>
-        <button onClick={() => refetch()}>{"U"}</button>
+        <div className="col-start-5 col-span-1 fill-gray-500">
+          <button onClick={() => removeCardCallback(baseSymbol)}>{"X"}</button>
+          <button onClick={() => refetch()}>{"U"}</button>
+        </div>
       </div>
       <div className="bg-grey-500 h-3 w-max"></div>
     </div>
