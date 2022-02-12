@@ -23,15 +23,15 @@ const Layout = () => {
 
   return (
     <div className="bg-[#1E003C] h-screen">
-      <div className="h-auto ml-10 background-images">
-        <img src={logo} className="w-40 h-40" alt="logo" />
-        <div className="grid grid-cols-1 md:grid-cols-2">
+      <div className="h-[85%] background-images">
+        <img src={logo} className="w-40 h-40 ml-24 -mt-5" alt="logo" />
+        <div className="grid grid-cols-1 md:grid-cols-2 ml-24">
           <div className="col-span-1">
-            <div>
-              <p className="font-extrabold text-2xl text-white">
+            <div className="mb-14">
+              <p className="font-semibold text-[40px] text-white pr-[30%] leading-tight">
                 Now you can track all your cryptos here!
               </p>
-              <p className="text-gray-500 font-semibold text-lg">
+              <p className="text-gray-500 font-semibold text-[20px] pr-[60%] pt-5 leading-tight">
                 Just enter the cryptocurrency code on the form to the right.
               </p>
             </div>
@@ -50,14 +50,12 @@ const Layout = () => {
           </div>
         </div>
       </div>
-      <div className="bottom-0 w-full h-20 bg-white">
-        <p className="text-center text-gray-400 text-xs">
+      <div className="bottom-0 w-full h-[15%] bg-white">
+        <p className="text-center text-gray-400 text-xs p-10">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
           pellentesque eget massa in sollicitudin. Vivamus eget eros tristique,
           bibendum diam quis, laoreet eros. Pellentesque condimentum dolor quis
           dapibus dignissim. Suspendisse non lacinia nunc, et vestibulum dolor.
-          Curabitur tempor fringilla sapien, ornare facilisis lectus interdum a.
-          Morbi ac tellus vitae lacus imperdiet ultrices in non odio.
         </p>
       </div>
     </div>
