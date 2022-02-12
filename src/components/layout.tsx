@@ -24,13 +24,17 @@ const Layout = () => {
   return (
     <div className="bg-[#1E003C] h-screen">
       <div className="h-[85%] background-images">
-        <img src={logo} className="w-40 h-40 ml-24 -mt-5" alt="logo" />
-        <div className="grid grid-cols-1 md:grid-cols-2 ml-24">
+        <img
+          src={logo}
+          className="w-40 h-40 ml-24 -mt-5"
+          alt="Bitcasino icon"
+        />
+        <div className="grid grid-cols-1 lg:grid-cols-2 ml-24">
           <div className="col-span-1">
             <div className="mb-14">
-              <p className="font-semibold text-[40px] text-white pr-[30%] leading-tight">
+              <h1 className="font-semibold text-[40px] text-white pr-[30%] leading-tight">
                 Now you can track all your cryptos here!
-              </p>
+              </h1>
               <p className="text-gray-500 font-semibold text-[20px] pr-[60%] pt-5 leading-tight">
                 Just enter the cryptocurrency code on the form to the right.
               </p>
