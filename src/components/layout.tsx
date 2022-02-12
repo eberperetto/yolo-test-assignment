@@ -2,14 +2,18 @@ import React, { FunctionComponent, useState } from "react";
 import PriceCard from "./priceCard";
 import logo from "../assets/logo.svg";
 import BaseSymbolForm from "./baseSymbolForm";
+import { validateBaseSymbol } from "../utils/helpers";
 
 /**
  * Main component of the app
  */
 const Layout: FunctionComponent = () => {
-  const [baseSymbols, setBaseSymbols] = useState<string[]>([]);
+  const [baseSymbols, setBaseSymbols] = useState<string[]>(["BTC"]);
 
   const addBaseSymbol = async (baseSymbol: string): Promise<string> => {
+    if (!validateBaseSymbol(baseSymbol)) {
+      return `${baseSymbol} is not valid, your code should have at least three characters and letters among them!`;
+    }
     if (baseSymbols.find((symbol) => symbol === baseSymbol)) {
       return `${baseSymbol} is already on the list!`;
     }
