@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FunctionComponent, useState } from "react";
 import PriceCard from "./priceCard";
 import logo from "../assets/logo.svg";
 import BaseSymbolForm from "./baseSymbolForm";
@@ -6,8 +6,8 @@ import BaseSymbolForm from "./baseSymbolForm";
 /**
  * Main component of the app
  */
-const Layout = () => {
-  const [baseSymbols, setBaseSymbols] = useState(["BTC", "XRP", "BNB"]);
+const Layout: FunctionComponent = () => {
+  const [baseSymbols, setBaseSymbols] = useState<string[]>([]);
 
   const addBaseSymbol = async (baseSymbol: string): Promise<string> => {
     if (baseSymbols.find((symbol) => symbol === baseSymbol)) {
@@ -40,6 +40,11 @@ const Layout = () => {
               </p>
             </div>
             <div className="relative w-[400px] h-[300px] overflow-auto">
+              {!baseSymbols.length && (
+                <p className="text-gray-500 font-semibold text-[18px]">
+                  No cryptos here, go ahead and add some!
+                </p>
+              )}
               {baseSymbols?.map((baseSymbol, index) => (
                 <PriceCard
                   key={`${index}`}

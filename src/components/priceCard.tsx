@@ -61,10 +61,14 @@ const PriceCard = ({ baseSymbol, removeCardCallback }: PriceCardProps) => {
         </div>
         <div className="col-start-5 col-span-1 pt-4">
           <button onClick={() => refetch()}>
-            <img src={refresh} className="w-5 h-5" alt="Refresh crypto price" />
+            <img
+              src={refresh}
+              className="w-5 h-5"
+              alt="Refresh crypto price icon"
+            />
           </button>
           <button onClick={() => removeCardCallback(baseSymbol)}>
-            <img src={clear} className="w-5 h-5" alt="Remove crypto" />
+            <img src={clear} className="w-5 h-5" alt="Remove crypto icon" />
           </button>
         </div>
         <div className="h-[1px] mt-2 col-start-1 col-span-5 bg-gradient-to-r from-gray-400"></div>
