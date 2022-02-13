@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FunctionComponent, useState } from "react";
 
 interface BaseSymbolFormProps {
   submitCallback: (baseSymbol: string) => Promise<string>;
@@ -7,7 +7,9 @@ interface BaseSymbolFormProps {
 /**
  * Renders a form to add crypto base symbols to a price list
  */
-const BaseSymbolForm = ({ submitCallback }: BaseSymbolFormProps) => {
+const BaseSymbolForm: FunctionComponent<BaseSymbolFormProps> = ({
+  submitCallback,
+}) => {
   const [baseSymbol, setBaseSymbol] = useState("");
   const [formMessage, setFormMessage] = useState("");
 

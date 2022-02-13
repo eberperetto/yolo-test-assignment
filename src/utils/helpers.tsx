@@ -3,3 +3,8 @@
 export const validateBaseSymbol = (baseSymbol: string): boolean => {
   return !!baseSymbol.match("([A-Z]+[0-9]?){3,}");
 };
+
+// Format price string to Euros
+export const formatPrice = (price: string): string => {
+  return `${parseFloat(price).toFixed(2)} €`;
+};

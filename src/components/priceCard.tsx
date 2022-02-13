@@ -3,6 +3,7 @@ import { gql, useQuery } from "@apollo/client";
 import icon from "../assets/icon.svg";
 import clear from "../assets/clear.svg";
 import refresh from "../assets/refresh.svg";
+import { formatPrice } from "../utils/helpers";
 
 interface PriceCardProps {
   baseSymbol: string;
@@ -13,9 +14,6 @@ interface PriceQueryResults {
   markets: { ticker: { lastPrice: string } }[];
 }
 
-/**
- * Renders a card that queries and displays the price of a crypto
- */
 const PRICE_QUERY = gql`
   query price($baseSymbol: String!) {
     markets(
@@ -28,25 +26,27 @@ const PRICE_QUERY = gql`
   }
 `;
 
+/**
+ * Renders a card that queries and displays the price of a crypto
+ */
+
 const PriceCard: FunctionComponent<PriceCardProps> = ({
   baseSymbol,
   removeCardCallback,
 }) => {
+  // Uses apollo client query hook to handle all data fetching
   const { data, error, loading, refetch } = useQuery(PRICE_QUERY, {
     variables: { baseSymbol },
     notifyOnNetworkStatusChange: true,
   });
 
-  const formatMarketPrice = (marketPrice: string): string => {
-    return `${parseFloat(marketPrice).toFixed(2)} €`;
-  };
-
+  // Get the first market ticker that is not null and return its lastPrice
   const getFirstValidMarketPrice = (results: PriceQueryResults): string => {
     const firstValidResult = results.markets.find(
       (result) => result.ticker !== null
     );
     return firstValidResult
-      ? formatMarketPrice(firstValidResult.ticker.lastPrice)
+      ? formatPrice(firstValidResult.ticker.lastPrice)
       : "Price or crypto not found!";
   };
 
