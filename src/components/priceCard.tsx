@@ -53,7 +53,13 @@ const PriceCard: FunctionComponent<PriceCardProps> = ({
   return (
     <div className="text-white h-auto w-auto mt-4 mb-4">
       <div className="grid grid-cols-6">
-        <img src={icon} className="col-span-1 w-15 h-15" alt="Trophy icon" />
+        <img
+          src={icon}
+          height={50}
+          width={50}
+          className="col-span-1 w-[50px] h-[50px]"
+          alt="Trophy icon"
+        />
         <div className="col-start-2 col-span-2">
           <p className="font-semibold text-white">{baseSymbol}</p>
           <div className="text-gray-500 pt-1">
@@ -62,16 +68,27 @@ const PriceCard: FunctionComponent<PriceCardProps> = ({
             {data && !loading && <p>{getFirstValidMarketPrice(data)}</p>}
           </div>
         </div>
-        <div className="col-start-5 col-span-1 pt-4">
-          <button onClick={() => refetch()}>
+        <div className="col-start-5 col-span-2 pt-4">
+          <button onClick={() => refetch()} className="w-[40px] h-[40px] mr-2">
             <img
               src={refresh}
+              height={5}
+              width={5}
               className="w-5 h-5"
               alt="Refresh crypto price icon"
             />
           </button>
-          <button onClick={() => removeCardCallback(baseSymbol)}>
-            <img src={clear} className="w-5 h-5" alt="Remove crypto icon" />
+          <button
+            onClick={() => removeCardCallback(baseSymbol)}
+            className="w-[40px] h-[40px]"
+          >
+            <img
+              src={clear}
+              height={5}
+              width={5}
+              className="w-5 h-5"
+              alt="Remove crypto icon"
+            />
           </button>
         </div>
         <div className="h-[1px] mt-2 col-start-1 col-span-5 bg-gradient-to-r from-gray-400"></div>

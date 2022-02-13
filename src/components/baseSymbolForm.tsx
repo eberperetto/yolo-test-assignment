@@ -27,6 +27,7 @@ const BaseSymbolForm: FunctionComponent<BaseSymbolFormProps> = ({
     <div className="bg-white rounded-sm p-10">
       <div className="border-2 border-solid border-gray-300 rounded-sm h-10">
         <input
+          id="baseSymbol"
           name="baseSymbol"
           type="text"
           required
@@ -47,7 +48,7 @@ const BaseSymbolForm: FunctionComponent<BaseSymbolFormProps> = ({
         type={"submit"}
         onClick={handleFormSubmit}
         value="Add"
-        className="bg-orange-600 text-white text-center rounded-3xl w-full pt-2 pb-2 mt-5"
+        className="bg-orange-700 text-white text-center rounded-3xl w-full pt-2 pb-2 mt-5"
       />
       {formMessage && (
         <p className="text-gray-500 text-center w-full mt-5">{formMessage}</p>
