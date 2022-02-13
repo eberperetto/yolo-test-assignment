@@ -32,14 +32,19 @@ const Home: FunctionComponent = () => {
 
   return (
     <Layout>
-      <div className="h-max lg:background-images">
+      <div className="h-max background-images md:background-images-medium lg:background-images-large">
         <div className="ml-12 md:ml-24 -mt-5">
           <Logo />
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 ml-12 md:ml-24">
           <div className="col-span-1">
             <div className="mb-12 md:mb-14">
-              <Title title={"Now you can track all your cryptos here!"} subtitle={"Just enter the cryptocurrency code on the form to the right."} />
+              <Title
+                title={"Now you can track all your cryptos here!"}
+                subtitle={
+                  "Just enter the cryptocurrency code on the form to the right."
+                }
+              />
             </div>
             <PriceList
               baseSymbols={baseSymbols}
