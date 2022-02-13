@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { gql, useQuery } from "@apollo/client";
 import icon from "../assets/icon.svg";
 import clear from "../assets/clear.svg";
@@ -28,7 +28,10 @@ const PRICE_QUERY = gql`
   }
 `;
 
-const PriceCard = ({ baseSymbol, removeCardCallback }: PriceCardProps) => {
+const PriceCard: FunctionComponent<PriceCardProps> = ({
+  baseSymbol,
+  removeCardCallback,
+}) => {
   const { data, error, loading, refetch } = useQuery(PRICE_QUERY, {
     variables: { baseSymbol },
     notifyOnNetworkStatusChange: true,
