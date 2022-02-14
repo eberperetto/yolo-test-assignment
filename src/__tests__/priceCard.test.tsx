@@ -43,6 +43,18 @@ const mockResponses = [
   },
 ];
 
+const mockNetworkErrorResponses = [
+  {
+    request: {
+      query: GET_PRICE_QUERY,
+      variables: {
+        baseSymbol: "ETH",
+      },
+    },
+    error: new Error("An error occurred"),
+  },
+];
+
 test("renders with real crypto code", async () => {
   render(
     <MockedProvider mocks={mockResponses} addTypename={false}>
@@ -63,4 +75,15 @@ test("renders with invalid crypto code", async () => {
   expect(screen.getByText("TEST111")).toBeInTheDocument();
   expect(screen.getByText("Loading...")).toBeInTheDocument();
   await screen.findByText("Price or crypto not found!");
+});
+
+test("renders with API network error", async () => {
+  render(
+    <MockedProvider mocks={mockNetworkErrorResponses} addTypename={false}>
+      <PriceCard baseSymbol="ETH" removeCardCallback={mockCallback} />
+    </MockedProvider>
+  );
+  expect(screen.getByText("ETH")).toBeInTheDocument();
+  expect(screen.getByText("Loading...")).toBeInTheDocument();
+  await screen.findByText("Error! Something went wrong!");
 });
