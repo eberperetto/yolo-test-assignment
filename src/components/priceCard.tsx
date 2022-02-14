@@ -14,7 +14,7 @@ interface PriceQueryResults {
   markets: { ticker: { lastPrice: string } }[];
 }
 
-const PRICE_QUERY = gql`
+export const GET_PRICE_QUERY = gql`
   query price($baseSymbol: String!) {
     markets(
       filter: { baseSymbol: { _eq: $baseSymbol }, quoteSymbol: { _eq: "EUR" } }
@@ -35,7 +35,7 @@ const PriceCard: FunctionComponent<PriceCardProps> = ({
   removeCardCallback,
 }) => {
   // Uses apollo client query hook to handle all data fetching
-  const { data, error, loading, refetch } = useQuery(PRICE_QUERY, {
+  const { data, error, loading, refetch } = useQuery(GET_PRICE_QUERY, {
     variables: { baseSymbol },
     notifyOnNetworkStatusChange: true,
   });
