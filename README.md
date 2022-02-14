@@ -1,8 +1,21 @@
+# Solution by Éber Jessé da Silva Peretto
+
+As requested in the assignment, this website was created on React with TypeScript, using Apollo Client and hooks to fetch the required data from a GraphQL API service. The page styles were created using Tailwind CSS.
+
+The layout was made following the model of the preview image, with the addition of a refetch/refresh button on each cryptocurrency card and also a second layout to support mobile screens. I'm not used at all to creating the component styles and screen layouts, but I gave my best to achieve a good looking and well performing page, following all the Lighthouse recommendations that I could implement.
+
+Regarding the React aspect of the website, I've componentized only the parts that were fitting to be reused in other pages. The form input is being validated using regex and there is also error handling on the GraphQL queries. At last, I've also created a set of tests using React Testing Library, mainly with the cryptocurrency price card that performs GraphQL queries.
+
+This website is also running on Heroku on https://yellow-strong-carrion.herokuapp.com/
+
+I want to thank you all for the opportunity and hope to have met expectations with this test.
+
 # Frontend Developer Test Assignment
 
 Create a website that will display the prices of different cryptocurrencies. The prices will be fetched from a 3rd party GraphQL API service.
 
 Task description:
+
 - Use React, Apollo, TypeScript and hooks.
 - Create a website that looks similar to preview.png.
 - The required images are in “assets” folder.
@@ -31,6 +44,7 @@ You can explore the Graphiql interface for that API at https://api.blocktap.io/g
 You may also use any other GraphQL API service to fetch the prices from.
 
 Sample JSON response from the request above:
+
 ```
   {
   "data": {
